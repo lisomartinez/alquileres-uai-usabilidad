@@ -67,7 +67,7 @@ export default Vue.extend({
   },
   data() {
     return {
-      isRegistrationMenuOpen: true
+      isRegistrationMenuOpen: false
     }
   },
   methods: {

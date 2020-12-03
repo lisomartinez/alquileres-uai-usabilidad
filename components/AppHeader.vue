@@ -63,17 +63,17 @@ export default Vue.extend({
   name: 'AppHeader',
   components: {
     AppSearchBar,
-    UserRegistration
+    UserRegistration,
   },
   data() {
     return {
-      isRegistrationMenuOpen: false
+      isRegistrationMenuOpen: false,
     }
   },
   methods: {
     toggleRegistrationMenu(): void {
       this.isRegistrationMenuOpen = !this.isRegistrationMenuOpen
-    }
-  }
+    },
+  },
 })
 </script>

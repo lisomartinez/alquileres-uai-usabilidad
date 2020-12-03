@@ -53,7 +53,7 @@ export default Vue.extend({
   computed: {
     today(): string {
       return new Date().toDateString()
-    }
-  }
+    },
+  },
 })
 </script>

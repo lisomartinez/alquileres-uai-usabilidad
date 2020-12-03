@@ -164,8 +164,8 @@ export default Vue.extend({
   name: 'UserRegistration',
   props: {
     open: {
-      type: Boolean
-    }
+      type: Boolean,
+    },
   },
   data() {
     return {
@@ -173,23 +173,23 @@ export default Vue.extend({
       lastName: '',
       birthDate: '',
       email: '',
-      password: ''
+      password: '',
     }
   },
   validations: {
     name: {
       required,
       minLength: minLength(2),
-      alpha
+      alpha,
     },
     lastName: {
       required,
       minLength: minLength(2),
-      alpha
+      alpha,
     },
     email: {
       required,
-      email
+      email,
     },
     password: {
       required,
@@ -202,8 +202,8 @@ export default Vue.extend({
       },
       containsNumber(value) {
         return /[0-9]/.test(value)
-      }
-    }
+      },
+    },
   },
   methods: {
     close() {
@@ -215,7 +215,7 @@ export default Vue.extend({
         clearTimeout(touchMap.get($v))
       }
       touchMap.set($v, setTimeout($v.$touch, 1000))
-    }
-  }
+    },
+  },
 })
 </script>

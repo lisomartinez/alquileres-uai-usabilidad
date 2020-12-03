@@ -203,7 +203,7 @@ export default Vue.extend({
       containsNumber(value) {
         return /[0-9]/.test(value)
       }
-    }
+    },
   },
   methods: {
     close() {

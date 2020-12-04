@@ -8,6 +8,7 @@ export interface User {
 
 export interface Place {
   id: string
+  title: string
   address: string
   town: string
   capacity: number
@@ -15,4 +16,5 @@ export interface Place {
   rest: number
   price: number
   description: string
+  photos: string[]
 }

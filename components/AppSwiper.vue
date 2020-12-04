@@ -1,43 +1,67 @@
 <template>
   <swiper class="swiper" :options="swiperOption">
-    <swiper-slide>Slide 1</swiper-slide>
-    <swiper-slide>Slide 2</swiper-slide>
-    <swiper-slide>Slide 3</swiper-slide>
-    <swiper-slide>Slide 4</swiper-slide>
-    <swiper-slide>Slide 5</swiper-slide>
-    <swiper-slide>Slide 6</swiper-slide>
-    <swiper-slide>Slide 7</swiper-slide>
-    <swiper-slide>Slide 8</swiper-slide>
-    <swiper-slide>Slide 9</swiper-slide>
-    <swiper-slide>Slide 10</swiper-slide>
+    <swiper-slide
+      v-for="photo in slides"
+      :key="photo"
+      :style="backgrounds(photo)"
+    >
+    </swiper-slide>
     <div slot="pagination" class="swiper-pagination"></div>
+    <div slot="button-prev" class="swiper-button-prev"></div>
+    <div slot="button-next" class="swiper-button-next"></div>
   </swiper>
 </template>
 
 <script>
-import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
-import 'swiper/swiper-bundle.css'
-
 export default {
   name: 'AppSwiper',
-  title: 'Space between slides',
-  components: {
-    Swiper,
-    SwiperSlide,
-  },
-  directives: {
-    swiper: directive,
+  props: {
+    slides: {
+      required: true,
+      type: Array,
+    },
   },
   data() {
     return {
       swiperOption: {
-        spaceBetween: 30,
+        spaceBetween: 10,
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
         },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
       },
     }
   },
+  methods: {
+    backgrounds(image) {
+      return {
+        backgroundImage: 'url(' + image + ')',
+        backgroundSize: 'cover',
+      }
+    },
+  },
 }
 </script>
+
+<style lang="scss" scoped>
+@import '~swiper/swiper';
+
+.swiper {
+  height: 200px;
+  width: 300px;
+
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1rem;
+    background-color: white;
+  }
+}
+</style>

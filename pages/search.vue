@@ -1,10 +1,11 @@
 <template>
   <main class="columns mx-6 mt-6">
-    <aside class="is-one-fifth mr-6">
+    <aside class="is-one-third mr-6">
       <search-filter-list></search-filter-list>
     </aside>
-    <section class="mx-6">
-      <place-list></place-list>
+    <div class="mx-6"></div>
+    <section class="place-list ml-6">
+      <place-list class="mr-4"></place-list>
     </section>
   </main>
 </template>

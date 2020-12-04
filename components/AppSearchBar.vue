@@ -6,13 +6,11 @@
         <div class="is-flex is-flex-direction-row is-flex-wrap is-fullwidth">
           <div class="field has-addons is-fullwidth is-flex-grow-1 mb-4">
             <div class="control is-flex-grow-1">
-              <!--            <input class="input" placeholder="Buenos Aires" type="text" />
--->
-              <!--              <autocomplete-->
-              <!--                :search="search"-->
-              <!--                placeholder="Buenos Aires..."-->
-              <!--                aria-label="Search Wikipedia"-->
-              <!--              ></autocomplete>-->
+              <autocomplete
+                :search="search"
+                placeholder="Buenos Aires..."
+                aria-label="Search Wikipedia"
+              ></autocomplete>
             </div>
             <div class="control">
               <button class="button is-success">Buscar</button>

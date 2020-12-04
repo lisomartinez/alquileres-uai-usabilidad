@@ -7,13 +7,7 @@
     >
       <div class="navbar-brand">
         <nuxt-link to="/">
-          <a class="navbar-item">
-            <img
-              height="28"
-              src="https://bulma.io/images/bulma-logo.png"
-              width="112"
-            />
-          </a>
+          <a class="navbar-item is-size-3 has-text-weight-bold"> ALQUILERES </a>
         </nuxt-link>
 
         <a

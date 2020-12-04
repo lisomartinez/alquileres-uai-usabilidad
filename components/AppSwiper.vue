@@ -1,15 +1,16 @@
 <template>
-  <swiper class="swiper" :options="swiperOption">
-    <swiper-slide
-      v-for="photo in slides"
-      :key="photo"
-      :style="backgrounds(photo)"
-    >
-    </swiper-slide>
-    <div slot="pagination" class="swiper-pagination"></div>
-    <div slot="button-prev" class="swiper-button-prev"></div>
-    <div slot="button-next" class="swiper-button-next"></div>
-  </swiper>
+  <div>HOLA</div>
+  <!--  <swiper class="swiper" :options="swiperOption">-->
+  <!--    <swiper-slide-->
+  <!--      v-for="photo in slides"-->
+  <!--      :key="photo"-->
+  <!--      :style="backgrounds(photo)"-->
+  <!--    >-->
+  <!--    </swiper-slide>-->
+  <!--    <div slot="pagination" class="swiper-pagination"></div>-->
+  <!--    <div slot="button-prev" class="swiper-button-prev"></div>-->
+  <!--    <div slot="button-next" class="swiper-button-next"></div>-->
+  <!--  </swiper>-->
 </template>
 
 <script>

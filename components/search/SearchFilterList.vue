@@ -12,7 +12,7 @@
 
       <div class="card-content">
         <div class="control mt-6">
-          <vue-slider v-model="price"></vue-slider>
+          <!--          <vue-slider v-model="price"></vue-slider>-->
         </div>
       </div>
     </div>
@@ -74,7 +74,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import 'vue-slider-component/theme/material.css'
+// import 'vue-slider-component/theme/material.css'
 
 export default Vue.extend({
   name: 'SearchFilterList',

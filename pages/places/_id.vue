@@ -1,7 +1,7 @@
 <template>
   <div class="is-flex is-flex-direction-column">
     <div>
-      <app-swiper :slides="place.photos"></app-swiper>
+      <!--      <app-swiper :slides="place.photos"></app-swiper>-->
     </div>
     <div class="container">
       <div class="is-flex is-justify-center">
@@ -10,7 +10,7 @@
             <place-item-info
               :id="place.id"
               :rooms="place.rooms"
-              :rest="place.res"
+              :rest="place.rest"
               :price="place.price"
               :capacity="place.capacity"
               :address="place.address"

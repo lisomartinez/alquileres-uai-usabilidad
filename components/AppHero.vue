@@ -1,19 +1,19 @@
 <template>
-  <section class="hero is-dark is-medium">
+  <main class="hero is-dark is-medium">
     <div class="hero-body">
       <div class="container">
         <h1 class="title is-size-1 has-text-grey-lighter">Primary title</h1>
         <h2 class="subtitle">Primary subtitle</h2>
       </div>
     </div>
-  </section>
+  </main>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 
 export default Vue.extend({
-  name: 'AppHero'
+  name: 'AppHero',
 })
 </script>
 

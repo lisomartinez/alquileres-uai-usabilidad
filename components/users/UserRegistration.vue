@@ -8,7 +8,7 @@
           <button aria-label="close" class="delete" @click="close"></button>
         </header>
         <section class="modal-card-body">
-          <div class="container">
+          <div v-if="!isRegistered" class="container">
             <form @submit.prevent="close">
               <div class="field">
                 <label class="label">Nombre</label>
@@ -27,13 +27,13 @@
                   v-if="$v.name.$error && !$v.name.required"
                   class="help is-danger"
                 >
-                  Field is required
+                  El campo es obligatorio
                 </div>
                 <div
                   v-if="$v.name.$error && !$v.name.minLength"
                   class="help is-danger"
                 >
-                  Minimo 2 letras
+                  El nombre debe tener 2 letras como minimo
                 </div>
               </div>
               <div class="field">
@@ -53,19 +53,37 @@
                   v-if="$v.lastName.$error && !$v.lastName.required"
                   class="help is-danger"
                 >
-                  Field is required
+                  El campo es obligatorio
                 </div>
                 <div
                   v-if="$v.lastName.$error && !$v.lastName.minLength"
                   class="help is-danger"
                 >
-                  Minimo 2 letras
+                  El apellido debe tener 2 letras como minimo
                 </div>
               </div>
               <div class="field">
                 <label class="label">Fecha de Nacimiento</label>
                 <div class="control">
-                  <input class="input is-rounded" type="date" />
+                  <input
+                    v-model="birthDate"
+                    class="input is-rounded"
+                    :class="{ 'is-danger': $v.birthDate.$anyError }"
+                    type="date"
+                    @input="delayTouch($v.birthDate)"
+                  />
+                </div>
+                <div
+                  v-if="$v.birthDate.$error && !$v.birthDate.required"
+                  class="help is-danger"
+                >
+                  El campo es obligatorio
+                </div>
+                <div
+                  v-if="$v.birthDate.$error && !$v.birthDate.minValue"
+                  class="help is-danger"
+                >
+                  Debe ser mayor de 18 anios.
                 </div>
               </div>
               <div class="field">
@@ -85,13 +103,13 @@
                   v-if="$v.email.$error && !$v.email.required"
                   class="help is-danger"
                 >
-                  Field is required
+                  El campo es obligatorio
                 </div>
                 <div
                   v-if="$v.email.$error && !$v.email.email"
                   class="help is-danger"
                 >
-                  formato invalido
+                  El formato del correo electronico es invalido
                 </div>
               </div>
               <div class="field">
@@ -109,43 +127,57 @@
                   v-if="$v.password.$error && !$v.password.required"
                   class="help is-danger"
                 >
-                  Field is required
+                  El campo es obligatorio
                 </div>
                 <div
                   v-if="$v.password.$error && !$v.password.minLength"
                   class="help is-danger"
                 >
-                  Minimo de 8 caracteres
+                  La contrasena debe contener 8 caracteres como minimo
                 </div>
                 <div
                   v-if="$v.password.$error && !$v.password.containsUppercase"
                   class="help is-danger"
                 >
-                  should contains uppercase
+                  La contrasena debe contener al menos una letra mayuscula
                 </div>
 
                 <div
                   v-if="$v.password.$error && !$v.password.containsLowercase"
                   class="help is-danger"
                 >
-                  should contains lowercase
+                  La contrasena debe contener al menos una letra minuscula
                 </div>
 
                 <div
                   v-if="$v.password.$error && !$v.password.containsNumber"
                   class="help is-danger"
                 >
-                  should contains numbers
+                  La contrasena debe contener al menos un numero
                 </div>
+              </div>
+              <div class="field">
+                <label class="checkbox">
+                  <input type="checkbox" />
+                  Para registrarse debe aceptar los<a href="#">
+                    términos de uso y las políticas de privacidad
+                  </a>
+                </label>
               </div>
             </form>
           </div>
+          <div v-else class="container w-1/2 h-1/2">
+            <fa :icon="['fas', 'check-circle']" size="4x"></fa>
+          </div>
         </section>
-        <footer class="modal-card-foot">
+        <footer v-if="!isRegistered" class="modal-card-foot">
           <button :disabled="$v.$invalid" class="button is-success is-rounded">
-            Save changes
+            Registrarse
           </button>
-          <button class="button is-rounded" @click="close">Cancel</button>
+          <button class="button is-success is-rounded" @click="register">
+            Registrarse2
+          </button>
+          <button class="button is-rounded" @click="close">Cancelar</button>
         </footer>
       </div>
     </div>
@@ -157,15 +189,24 @@ import Vue from 'vue'
 import { alpha, email, minLength, required } from 'vuelidate/lib/validators'
 import { Validation } from 'vuelidate/vuelidate'
 import { ValidationGroups } from 'vue/types/vue'
+import { userStore } from '~/utils/store-accessor'
 
 const touchMap = new WeakMap()
+
+function isDate18orMoreYearsOld(
+  day: number,
+  month: number,
+  year: number
+): boolean {
+  return new Date(year + 18, month - 1, day) <= new Date()
+}
 
 export default Vue.extend({
   name: 'UserRegistration',
   props: {
     open: {
-      type: Boolean
-    }
+      type: Boolean,
+    },
   },
   data() {
     return {
@@ -173,23 +214,23 @@ export default Vue.extend({
       lastName: '',
       birthDate: '',
       email: '',
-      password: ''
+      password: '',
     }
   },
   validations: {
     name: {
       required,
       minLength: minLength(2),
-      alpha
+      alpha,
     },
     lastName: {
       required,
       minLength: minLength(2),
-      alpha
+      alpha,
     },
     email: {
       required,
-      email
+      email,
     },
     password: {
       required,
@@ -202,6 +243,28 @@ export default Vue.extend({
       },
       containsNumber(value) {
         return /[0-9]/.test(value)
+      },
+    },
+    birthDate: {
+      required,
+      minValue: (value) => {
+        const date: Date = new Date(value)
+        const year = date.getFullYear()
+        const month = date.getMonth()
+        const day = date.getDay()
+        return isDate18orMoreYearsOld(day, month, year)
+      },
+    },
+  },
+  computed: {
+    isRegistered() {
+      return userStore.isUserRegistered
+    },
+  },
+  watch: {
+    isRegistered(newValue) {
+      if (newValue) {
+        setTimeout(() => this.close(), 1000)
       }
     },
   },
@@ -215,7 +278,23 @@ export default Vue.extend({
         clearTimeout(touchMap.get($v))
       }
       touchMap.set($v, setTimeout($v.$touch, 1000))
-    }
-  }
+    },
+    register() {
+      // this.$store.commit('userIsRegistered', true)
+      userStore.startRegistration({
+        name: this.name,
+        lastName: this.lastName,
+        email: this.email,
+        password: this.password,
+        birthDate: this.birthDate,
+      })
+    },
+  },
 })
 </script>
+
+<style lang="scss" scoped>
+.success-icon {
+  font-size: 50px;
+}
+</style>

@@ -8,6 +8,6 @@ import AppHero from '~/components/AppHero.vue'
 
 export default Vue.extend({
   components: { AppHero },
-  template: 'default'
+  template: 'default',
 })
 </script>

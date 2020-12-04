@@ -30,50 +30,23 @@
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-end">
           <div class="navbar-item">
-            <div class="buttons">
-              <a class="button is-dark" @click="toggleRegistrationMenu">
-                <strong>Registrate</strong>
-              </a>
-              <a class="button is-dark">
-                <strong>Iniciar Sesion</strong>
-              </a>
-              <a class="button is-light"> Mis alojamientos </a>
-              <a class="button is-light"> Ayuda </a>
-            </div>
+            <user-admin></user-admin>
           </div>
         </div>
       </div>
     </nav>
-    <div class="container">
-      <app-search-bar></app-search-bar>
-    </div>
-    <user-registration
-      :open="isRegistrationMenuOpen"
-      @close-registration="toggleRegistrationMenu"
-    ></user-registration>
   </header>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import AppSearchBar from '~/components/AppSearchBar.vue'
-import UserRegistration from '~/components/users/UserRegistration.vue'
+
+import UserAdmin from '~/components/users/UserAdmin.vue'
 
 export default Vue.extend({
   name: 'AppHeader',
   components: {
-    AppSearchBar,
-    UserRegistration,
-  },
-  data() {
-    return {
-      isRegistrationMenuOpen: false,
-    }
-  },
-  methods: {
-    toggleRegistrationMenu(): void {
-      this.isRegistrationMenuOpen = !this.isRegistrationMenuOpen
-    },
+    UserAdmin,
   },
 })
 </script>

@@ -1,7 +1,6 @@
 <template>
-  <div>
+  <div class="is-flex is-flex-direction-column full-vh">
     <AppHeader />
-    <AppSearchBar />
     <Nuxt />
   </div>
 </template>
@@ -9,12 +8,10 @@
 <script lang="ts">
 import Vue from 'vue'
 import AppHeader from '~/components/AppHeader.vue'
-import AppSearchBar from '~/components/AppSearchBar.vue'
 
 export default Vue.extend({
   components: {
     AppHeader,
-    AppSearchBar,
   },
 })
 </script>

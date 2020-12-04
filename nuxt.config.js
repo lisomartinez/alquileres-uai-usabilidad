@@ -17,7 +17,15 @@ export default {
   css: ['@/assets/fonts/circular.css', '@/assets/main.scss'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['~/plugins/vuelidate.ts'],
+  plugins: [
+    { src: '~/plugins/vuelidate.ts' },
+    { src: '~/plugins/swiper.ts', ssr: false },
+    { src: '~/plugins/autocomplete.js' },
+    {
+      src: '~plugins/slider.ts',
+      ssr: false,
+    },
+  ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -28,7 +36,16 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
+    // 'nuxt-typed-vuex',
+    '@nuxtjs/fontawesome',
   ],
+
+  fontawesome: {
+    component: 'fa',
+    icons: {
+      solid: ['faCheckCircle'],
+    },
+  },
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [

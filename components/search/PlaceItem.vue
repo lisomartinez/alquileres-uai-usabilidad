@@ -10,7 +10,6 @@
 import Vue from 'vue'
 export default Vue.extend({
   name: 'PlaceItem',
-  components: {},
   props: {
     id: {
       required: true,

@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import PlaceItem from '~/components/search/PlaceItem'
+import PlaceItem from '~/components/search/PlaceItem.vue'
 
 export default Vue.extend({
   name: 'PlaceList',

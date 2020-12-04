@@ -6,13 +6,15 @@
       role="navigation"
     >
       <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io">
-          <img
-            height="28"
-            src="https://bulma.io/images/bulma-logo.png"
-            width="112"
-          />
-        </a>
+        <nuxt-link to="/">
+          <a class="navbar-item">
+            <img
+              height="28"
+              src="https://bulma.io/images/bulma-logo.png"
+              width="112"
+            />
+          </a>
+        </nuxt-link>
 
         <a
           aria-expanded="false"

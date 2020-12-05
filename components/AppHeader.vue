@@ -6,9 +6,9 @@
       role="navigation"
     >
       <div class="navbar-brand">
-        <nuxt-link to="/">
-          <a class="navbar-item is-size-3 has-text-weight-bold"> ALQUILERES </a>
-        </nuxt-link>
+        <NuxtLink to="/" class="navbar-item is-size-3 has-text-weight-bold">
+          ALQUILERES
+        </NuxtLink>
 
         <a
           aria-expanded="false"

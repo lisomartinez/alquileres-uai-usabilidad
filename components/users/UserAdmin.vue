@@ -1,10 +1,8 @@
 <template>
   <div class="buttons">
-    <nuxt-link to="/search">
-      <a class="button is-danger">
-        <strong>Preview Resultados de busqueda</strong>
-      </a>
-    </nuxt-link>
+    <NuxtLink to="/search" class="button is-danger">
+      <strong>Preview Resultados de busqueda</strong>
+    </NuxtLink>
 
     <a
       v-if="!isLoggedIn"

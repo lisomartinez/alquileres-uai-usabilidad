@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-content">
       <div class="columns">
-        <app-swiper :slides="photos" class="is-two-fifths mr-6"></app-swiper>
+        <div>FOTOS</div>
         <place-item-info
           :id="id"
           class="is-three-fifths"

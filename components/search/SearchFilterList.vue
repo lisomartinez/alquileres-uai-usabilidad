@@ -12,7 +12,7 @@
 
       <div class="card-content">
         <div class="control mt-6">
-          <!--          <vue-slider v-model="price"></vue-slider>-->
+          <input id="myRange" type="range" min="1" max="100" value="50" />
         </div>
       </div>
     </div>
@@ -74,7 +74,6 @@
 
 <script lang="ts">
 import Vue from 'vue'
-// import 'vue-slider-component/theme/material.css'
 
 export default Vue.extend({
   name: 'SearchFilterList',

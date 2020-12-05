@@ -21,9 +21,7 @@ export default {
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [
-    { src: '~/plugins/vuelidate.ts' },
-  ],
+  plugins: [{ src: '~/plugins/vuelidate.ts' }],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,

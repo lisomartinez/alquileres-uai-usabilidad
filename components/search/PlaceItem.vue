@@ -29,13 +29,11 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import AppSwiper from '~/components/AppSwiper.vue'
 import PlaceItemInfo from '~/components/search/PlaceItemInfo.vue'
 
 export default Vue.extend({
   name: 'PlaceItem',
   components: {
-    AppSwiper,
     PlaceItemInfo,
   },
   props: {

@@ -1,8 +1,6 @@
 <template>
   <div class="is-flex is-flex-direction-column">
-    <div>
-      <!--      <app-swiper :slides="place.photos"></app-swiper>-->
-    </div>
+    <div></div>
     <div class="container">
       <div class="is-flex is-justify-center">
         <div class="card mr-6">
@@ -38,13 +36,11 @@
 <script lang="ts">
 import Vue from 'vue'
 import { Place } from '~/store/models'
-import AppSwiper from '~/components/AppSwiper.vue'
 import PlaceItemInfo from '~/components/search/PlaceItemInfo.vue'
 
 export default Vue.extend({
   name: 'Id',
   components: {
-    AppSwiper,
     PlaceItemInfo,
   },
   layout: 'pages',
